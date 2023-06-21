@@ -1,3 +1,5 @@
+import os from 'os';
+
 import { CommandHandler } from './CommandHandler.js';
 
 const parseStringToCommands = (str) => {
@@ -19,21 +21,53 @@ const getUserName = () => {
     return userName;
 };
 
-const greetUser = (user) => {
-    process.stdout.write(`Welcome to the File Manager, ${user}!\n`);
+const greetUser = () => {
+    process.stdout.write(`Welcome to the File Manager, ${getUserName()}!\n`);
 };
 
-const listenCLICommands = () => {
-    process.stdin.on('data', (chunk) => {
-        const commandData = parseStringToCommands(String(chunk));
+const sayBye = () => {
+    process.stdout.write(`Thank you for using File Manager, ${getUserName()}, goodbye!`)
+}
 
-        CommandHandler.startAction(commandData.command, commandData.arguments);
+const exit = () => {
+    sayBye();
+    process.exit();
+}
+
+const showCurrentDirectory = () => {
+    process.stdout.write(`You are currently in ${process.cwd()}${os.EOL}`);
+};
+
+const showPrompt = () => {
+    process.stdout.write(`Enter a command: `);
+}
+
+const navigateToUsersHomeDirectory = () => {
+    console.log(os.homedir())
+    process.chdir(os.homedir());
+}
+
+const listenCLICommands = () => {
+    process.stdin.on('data', async (chunk) => {
+        if (String(chunk).trim() === '.exit') {
+            exit();
+        } else {
+            const commandData = parseStringToCommands(String(chunk));
+
+            await CommandHandler.startAction(commandData.command, commandData.arguments);
+            showCurrentDirectory();
+            showPrompt();
+        }
     });
 };
 
+process.on('SIGINT', exit);
+
 const runFileManager = () => {
-    const userName = getUserName();
-    greetUser(userName);
+    navigateToUsersHomeDirectory();
+    greetUser(getUserName());
+    showCurrentDirectory();
+    showPrompt();
     listenCLICommands();
 }
 
