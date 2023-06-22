@@ -1,15 +1,21 @@
 import path from 'path';
 import * as url from 'url';
+import stream from 'stream/promises';
+import fs from 'fs';
 
 export class Action {
     __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+    url = url;
+    fs = fs;
+    path = path;
+    fsPromises = fs.promises;
+    streamPromises = stream;
 
     constructor(command) {
         if (this.constructor === Action) {
             throw new Error('The abstract class "Action" could not be instantiated');
         }
 
-        this.path = path;
         this.command = command;
     }
 
