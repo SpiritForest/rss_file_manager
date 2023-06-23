@@ -14,6 +14,7 @@ import { Cpu } from './actions/os/cpu.js';
 import { Homedir } from './actions/os/homedir.js';
 import { Username } from './actions/os/username.js';
 import { Architecture } from './actions/os/architecture.js';
+import { Hash } from './actions/hash/hash.js';
 
 export class CommandHandler {
     static actions = new Map();
@@ -54,3 +55,4 @@ CommandHandler.addAction(new Cpu());
 CommandHandler.addAction(new Homedir());
 CommandHandler.addAction(new Username());
 CommandHandler.addAction(new Architecture());
+CommandHandler.addAction(new Hash());
