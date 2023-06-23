@@ -5,7 +5,7 @@ export class Architecture extends Action {
         super('--architecture');
     }
 
-    handle(args) {
+    handle() {
         console.log(this.os.arch());
     }
 }

@@ -1,6 +1,9 @@
 import os from 'os';
 
+import { initActions } from './initializer.js';
 import { CommandHandler } from './CommandHandler.js';
+
+const commandHandler = initActions(CommandHandler);
 
 const parseStringToCommands = (str) => {
     let [command, ...values] = str.split(' ');
@@ -43,7 +46,6 @@ const showPrompt = () => {
 }
 
 const navigateToUsersHomeDirectory = () => {
-    console.log(os.homedir())
     process.chdir(os.homedir());
 }
 
@@ -54,7 +56,7 @@ const listenCLICommands = () => {
         } else {
             const commandData = parseStringToCommands(String(chunk));
 
-            await CommandHandler.startAction(commandData.command, commandData.arguments);
+            await commandHandler.startAction(commandData.command, commandData.arguments);
             showCurrentDirectory();
             showPrompt();
         }

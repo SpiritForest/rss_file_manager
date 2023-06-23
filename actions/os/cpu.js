@@ -5,7 +5,7 @@ export class Cpu extends Action {
         super('--cpus');
     }
 
-    handle(args) {
+    handle() {
         const cpuInfo = {
             cores: this.os.cpus().length,
             cpus: this.os.cpus().map((cpuInfo) => ({
