@@ -9,6 +9,11 @@ import { Rn } from './actions/file/rn.js';
 import { Cp } from './actions/file/cp.js';
 import { Mv } from './actions/file/mv.js';
 import { Rm } from './actions/file/rm.js';
+import { Eol } from './actions/os/eol.js';
+import { Cpu } from './actions/os/cpu.js';
+import { Homedir } from './actions/os/homedir.js';
+import { Username } from './actions/os/username.js';
+import { Architecture } from './actions/os/architecture.js';
 
 export class CommandHandler {
     static actions = new Map();
@@ -44,3 +49,8 @@ CommandHandler.addAction(new Rn());
 CommandHandler.addAction(new Cp());
 CommandHandler.addAction(new Mv(new Cp(), new Rm()));
 CommandHandler.addAction(new Rm());
+CommandHandler.addAction(new Eol());
+CommandHandler.addAction(new Cpu());
+CommandHandler.addAction(new Homedir());
+CommandHandler.addAction(new Username());
+CommandHandler.addAction(new Architecture());

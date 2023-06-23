@@ -2,9 +2,11 @@ import path from 'path';
 import * as url from 'url';
 import stream from 'stream/promises';
 import fs from 'fs';
+import os from 'os';
 
 export class Action {
     __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+    os = os;
     url = url;
     fs = fs;
     path = path;
