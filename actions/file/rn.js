@@ -5,14 +5,15 @@ export class Rn extends Action {
         super('rn');
     }
 
-    handle(args) {
+    async handle(args) {
         const [ pathToFile, newFileName ] = args;
-        const normalizedPathToFile = this.path.normalize(pathToFile);
-        const oldFileName = this.path.basename(normalizedPathToFile);
+        const oldPath = this.path.normalize(pathToFile);
+        const oldFileName = this.path.basename(oldPath);
+        const newPath = oldPath.replace(oldFileName, '') + newFileName;
 
-        return this.fsPromises.rename(
-            normalizedPathToFile,
-            this.path.join(oldFileName, newFileName)
+        await this.fsPromises.rename(
+            oldPath,
+            newPath
         );
     }
 }

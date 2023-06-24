@@ -12,6 +12,6 @@ export class Cp extends Action {
         const readStream = this.fs.createReadStream(this.path.normalize(pathToFile));
         const writeStream = this.fs.createWriteStream(this.path.join(pathToNewDirectory, filename));
 
-        await this.streamPromises.pipeline(readStream, writeStream, { end: true });
+        await this.streamPromises.pipeline(readStream, writeStream);
     }
 }
