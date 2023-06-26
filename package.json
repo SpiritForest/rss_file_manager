@@ -1,0 +1,21 @@
+{
+  "name": "rss_file_manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js --username=John",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpiritForest/rss_file_manager.git"
+  },
+  "author": "DZMITTRY ZAKHAR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpiritForest/rss_file_manager/issues"
+  },
+  "homepage": "https://github.com/SpiritForest/rss_file_manager#readme"
+}

@@ -72,7 +72,7 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variable files
+# dotenv environment variable file
 .env
 .env.development.local
 .env.test.local
@@ -80,7 +80,6 @@ web_modules/
 .env.local
 
 # parcel-bundler cache (https://parceljs.org/)
-.cache
 .parcel-cache
 
 # Next.js build output
@@ -91,7 +90,7 @@ out
 .nuxt
 dist
 
-# Gatsby files
+# Gatsby file
 .cache/
 # Comment in the public line in if your project uses Gatsby and not Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
@@ -102,9 +101,8 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
-# Docusaurus cache and generated files
+# Docusaurus cache and generated file
 .docusaurus
 
 # Serverless directories
@@ -113,7 +111,7 @@ dist
 # FuseBox cache
 .fusebox/
 
-# DynamoDB Local files
+# DynamoDB Local file
 .dynamodb/
 
 # TernJS port file
